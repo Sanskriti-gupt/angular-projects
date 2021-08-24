@@ -9,15 +9,31 @@ import { MatDividerModule} from '@angular/material/divider'
 import { MatSidenavModule } from '@angular/material/sidenav'
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import {MatDatepickerModule, } from '@angular/material/datepicker'; 
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import {MatButtonModule} from '@angular/material/button'; 
+import {MatDialogModule} from '@angular/material/dialog'; 
 import { DashboardService } from 'src/app/modules/dashboard/dashboard.service';
+import { PostsService } from 'src/app/shared/posts.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PostComponent } from 'src/app/modules/posts/post/post.component';
 
 @NgModule({
   declarations: [
    DefaultComponent,
    DashboardComponent,
-   PostsComponent
+   PostsComponent,
+   PostComponent
   ],
-  imports: [
+  imports: [ 
     CommonModule,
     RouterModule,
     SharedModule,
@@ -25,9 +41,34 @@ import { DashboardService } from 'src/app/modules/dashboard/dashboard.service';
     MatDividerModule, 
     FlexLayoutModule,
     MatCardModule,
+    MatGridListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatToolbarModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule
+  ],
+  exports: [
+    MatToolbarModule,
+    MatGridListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatDialogModule,
   ],
   providers: [
-    DashboardService
+    DashboardService,
+    PostsService
   ]
 })
 export class DefaultModule { }
