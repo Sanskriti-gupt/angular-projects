@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostsService } from 'src/app/shared/posts.service';
+import { MatDialogRef}  from '@angular/material/dialog'
+import { PostsComponent } from '../posts.component';
 
 @Component({
   selector: 'app-post',
@@ -8,7 +10,8 @@ import { PostsService } from 'src/app/shared/posts.service';
 })
 export class PostComponent implements OnInit {
 
-  constructor(public service: PostsService) { }
+  constructor(public service: PostsService,
+    public dialogRef: MatDialogRef<PostsComponent>) { }
 
   departments = [
     {id: 1, value: 'Dep 1'},
@@ -23,5 +26,11 @@ export class PostComponent implements OnInit {
     this.service.form.reset();
     this.service.initializeFormGroup();
   }
+  
 
+  onClose() {
+    this.service.form.reset();
+    this.service.initializeFormGroup();
+    this.dialogRef.close();
+  }
 }

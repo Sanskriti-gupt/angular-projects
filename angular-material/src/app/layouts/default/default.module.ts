@@ -20,18 +20,24 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button'; 
 import {MatDialogModule} from '@angular/material/dialog'; 
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatIconModule} from '@angular/material/icon';
 import { DashboardService } from 'src/app/modules/dashboard/dashboard.service';
 import { PostsService } from 'src/app/shared/posts.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PostComponent } from 'src/app/modules/posts/post/post.component';
+import { PostListComponent } from 'src/app/modules/posts/post-list/post-list.component';
 
 @NgModule({
   declarations: [
    DefaultComponent,
    DashboardComponent,
    PostsComponent,
-   PostComponent
+   PostComponent,
+   PostListComponent
   ],
   imports: [ 
     CommonModule,
@@ -52,6 +58,8 @@ import { PostComponent } from 'src/app/modules/posts/post/post.component';
     MatCheckboxModule,
     MatButtonModule,
     MatDialogModule,
+    MatTableModule,
+    MatIconModule,
     ReactiveFormsModule,
     BrowserAnimationsModule
   ],
@@ -65,10 +73,14 @@ import { PostComponent } from 'src/app/modules/posts/post/post.component';
     MatCheckboxModule,
     MatDatepickerModule,
     MatDialogModule,
+    MatTableModule,
+    MatIconModule,
+    
   ],
   providers: [
     DashboardService,
     PostsService
-  ]
+  ],
+  entryComponents: [PostComponent]
 })
 export class DefaultModule { }
