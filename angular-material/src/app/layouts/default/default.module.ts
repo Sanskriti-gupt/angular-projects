@@ -30,6 +30,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PostComponent } from 'src/app/modules/posts/post/post.component';
 import { PostListComponent } from 'src/app/modules/posts/post-list/post-list.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from 'src/environments/environment';
+import { DepartmentService } from 'src/app/shared/department.service';
 
 @NgModule({
   declarations: [
@@ -61,7 +65,10 @@ import { PostListComponent } from 'src/app/modules/posts/post-list/post-list.com
     MatTableModule,
     MatIconModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   exports: [
     MatToolbarModule,
@@ -79,7 +86,8 @@ import { PostListComponent } from 'src/app/modules/posts/post-list/post-list.com
   ],
   providers: [
     DashboardService,
-    PostsService
+    PostsService,
+    DepartmentService
   ],
   entryComponents: [PostComponent]
 })

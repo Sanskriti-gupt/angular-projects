@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
-import { FormGroup, FormControl , Validator, Validators} from '@angular/forms';
+import { FormGroup, FormControl ,  Validators} from '@angular/forms';
+import { AngularFireDatabase, AngularFireList} from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostsService {
 
-  constructor() { }
+  constructor(private firebase: AngularFireDatabase) { }
+
+  postList!: AngularFireList<any>;
 
   form: FormGroup = new FormGroup({
     $key: new FormControl(null),
@@ -33,6 +36,45 @@ export class PostsService {
     isPermanent: false
 
     });
+  }
+
+  getPosts() {
+    this.postList = this.firebase.list('posts');
+    return this.postList.snapshotChanges();
+  }
+
+  insertPost(post: { fullName: any; email: any; mobile: any; city: any; gender: any; department: any; dob: any; isPermanent: any; }) {
+    this.postList.push({
+      
+      fullName: post.fullName,
+      email: post.email,
+      mobile: post.mobile,
+      city: post.city,
+      gender: post.gender,
+      department: post.department,
+      dob: post.dob,
+      isPermanent: post.isPermanent
+
+    });
+  }
+
+  updatePost(post: { $key: any; fullName: any; email: any; mobile: any; city: any; gender: any; department: any; dob: any; isPermanent: any; }) {
+    this.postList.update(post.$key,{
+      
+      fullName: post.fullName,
+      email: post.email,
+      mobile: post.mobile,
+      city: post.city,
+      gender: post.gender,
+      department: post.department,
+      dob: post.dob,
+      isPermanent: post.isPermanent
+
+    });
+  }
+
+  deletePost($key: string){
+    this.postList.remove($key);
   }
 
 }
