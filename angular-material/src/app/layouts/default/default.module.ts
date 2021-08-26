@@ -21,9 +21,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button'; 
 import {MatDialogModule} from '@angular/material/dialog'; 
 import {MatTableModule} from '@angular/material/table';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 import {MatIconModule} from '@angular/material/icon';
+import {MatSnackBarModule} from '@angular/material/snack-bar'; 
 import { DashboardService } from 'src/app/modules/dashboard/dashboard.service';
 import { PostsService } from 'src/app/shared/posts.service';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -63,7 +64,10 @@ import { DepartmentService } from 'src/app/shared/department.service';
     MatButtonModule,
     MatDialogModule,
     MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
     MatIconModule,
+    MatSnackBarModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
 
@@ -81,7 +85,10 @@ import { DepartmentService } from 'src/app/shared/department.service';
     MatDatepickerModule,
     MatDialogModule,
     MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
     MatIconModule,
+    MatSnackBarModule
     
   ],
   providers: [

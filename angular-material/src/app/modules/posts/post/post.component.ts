@@ -3,6 +3,7 @@ import { PostsService } from 'src/app/shared/posts.service';
 import { MatDialogRef}  from '@angular/material/dialog'
 import { PostsComponent } from '../posts.component';
 import { DepartmentService } from 'src/app/shared/department.service';
+import { NotificationService } from 'src/app/shared/notification.service';
 
 @Component({
   selector: 'app-post',
@@ -11,7 +12,7 @@ import { DepartmentService } from 'src/app/shared/department.service';
 })
 export class PostComponent implements OnInit {
 
-  constructor(public service: PostsService, public departmentService: DepartmentService,
+  constructor(public service: PostsService, public departmentService: DepartmentService, public notificationService: NotificationService,
     public dialogRef: MatDialogRef<PostsComponent>) { }
  
   departments = [
@@ -27,20 +28,27 @@ export class PostComponent implements OnInit {
   onClear() {
     this.service.form.reset();
     this.service.initializeFormGroup();
+    
   }
   
+
+
+  onSubmit(){
+    if(this.service.form.valid){
+      if(this.service.form.get('$key')?.value)
+      this.service.updatePost(this.service.form.value);
+      else
+      this.service.insertPost(this.service.form.value);
+      this.service.form.reset();
+      this.service.initializeFormGroup();
+      this.notificationService.success(':: Submitted Successfully');
+      this.onClose();
+    }
+  }
 
   onClose() {
     this.service.form.reset();
     this.service.initializeFormGroup();
     this.dialogRef.close();
-  }
-
-  onSubmit(){
-    if(this.service.form.valid){
-      this.service.insertPost(this.service.form.value);
-      this.service.form.reset();
-      this.service.initializeFormGroup();
-    }
   }
 }

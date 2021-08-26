@@ -1,7 +1,7 @@
 <mat-toolbar>
-    <span>New Post</span>
+    <span>{{service.form.controls['$key'].value?"Modify Post":"New Post"}}</span>
     <span class="fill-remaining-space"></span>
-    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabindex="-1"><mat-icon>clear</mat-icon></button>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
 </mat-toolbar>
 <form [formGroup]="service.form" (submit)="onSubmit()" class="normal-form"> 
     <mat-grid-list cols="2" rowHeight="300px">
@@ -44,11 +44,11 @@
                         </ng-container>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field>
-                    <input formControlName="dob" matInput [matDatepicker]="picker" placeholder="Date of Birth">
+                <!-- <mat-form-field>
+                    <input formControlName="dob" type="date" matInput [matDatepicker]="picker" placeholder="Date of Birth">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
+                </mat-form-field> -->
                 <div class="add-bottom-padding">
                     <mat-checkbox formControlName="isPermanent"> Paremanent </mat-checkbox>
                 </div>
